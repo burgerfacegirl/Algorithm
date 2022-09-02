@@ -36,6 +36,7 @@ for tc in range(1,T+1):
             maxI = i
 
     print(f'#{tc} {maxI} {count[maxI]}')
+
     # maxV = nums[0]
     # for i in range(N):
     #     if nums[i] > maxV :
