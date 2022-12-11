@@ -1,10 +1,9 @@
-
-
-bingo = [list(map(int,input().split())) for _ in range(5)]
-x = [list(map(int,input().split())) for _ in range(5)]
-
 ans = 0
 bingo_r = bingo_c = bingo_x = 0
+
+x = [list(map(int,input().split())) for _ in range(5)]
+bingo = [list(map(int,input().split())) for _ in range(5)]
+
 for i in range(5):
     for j in range(5):
         for p in range(5):
@@ -21,9 +20,10 @@ for i in range(5):
                         bingo_c += 1
                     if bingo[k][k] == 0:
                         bingo_x += 1
-            if bingo_c == 5 :
-                ans += 1
-            if bingo_r == 5 :
-                ans += 1
-            if bingo_x == 5 :
-                ans += 1
+            if bingo_c == 5 or bingo_r == 5 or bingo_x ==5:
+                print(ans)
+#             if bingo_r == 5 :
+#                 ans += 1
+#             if bingo_x == 5 :
+#                 ans += 1
+# print(ans)

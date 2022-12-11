@@ -1,19 +1,30 @@
-word = input().lower()
+word = input().upper()
 cnt_dict = {}
 word_set = set(word)
 word_count=[]
-for i in word:
-    if i in cnt_dict:
-        cnt_dict[i] += 1
-    else:
-        cnt_dict[i] = 1
 
-print(cnt_dict)
-    # cnt_list.append(i)
-    # cnt = 0
-    # cnt += word.count(i)
-    # cnt_list.append(i)
-    # cnt_list.append(word.count(i))
+for i in word_set:
+    cntW = 0
+    for j in word:
+        if i == j:
+            cntW += 1
+    cnt_dict[i] = cntW
+    word_count.append(cntW)
+
+maxV = max(cnt_dict.values())
+r_cnt_dict = {v:k for k,v in cnt_dict.items()} # dict의 key, value 뒤집기
+
+cnt = 0
+for i in word_count:
+    if maxV == i:
+        cnt += 1
+if cnt > 1:
+    ans = '?'
+else:
+    ans = r_cnt_dict.get(maxV)
+
+print(ans)
+
 # for alphabet in cnt_list:
 #     cnt=0
 #     cnt += word.count(alphabet)
