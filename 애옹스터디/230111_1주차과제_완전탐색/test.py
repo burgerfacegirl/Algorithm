@@ -1,27 +1,9 @@
 
-N = int(input())
-stones = list(map(int,input().split()))
+nums = list(i for i in range(1, 1000001))
 
-checks = []
-check = 0
-maxL = 0
-#L 체크
-for i in range(0, N):
-    if stones[i] == 1:
-        check += 1
-        if maxL < check:
-            maxL = check
-    else:
-        check = 0
+for i in range(len(nums)):
+    for j in str(nums[i]):
+        if str(nums[i]).count(j) > 1:
+            nums.remove(nums[i])
 
-check = 0
-maxR = 0
-#R 체크
-for j in range(0, N):
-    if stones[j] == 2:
-        check += 1
-        if maxR < check:
-            maxR = check
-    else:
-        check = 0
-print(max(maxL, maxR))
+print(nums)
