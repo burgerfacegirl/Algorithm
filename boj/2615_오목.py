@@ -5,6 +5,9 @@ pan = [list(map(int,input().split())) for _ in range(19)]
 
 check = False
 
+# di = [0, 1, 1,1]
+# dj = [1, 1, 0,-1]
+
 di = [-1, 0, 1,1]
 dj = [1, 1, 1,0]
 

@@ -1,36 +1,52 @@
-T = int(input())
+board = [list(map(int,input().split())) for _ in range(19)]
 
-for tc in range(1, T+1):
-    N = int(input())
-    ws = list(map(int,input().split()))
-    tall = max(ws)
-    diff = 0
-    cnt = [0] * 300
-    ans = 0
-    for i in range(N):
-        if tall-ws[i] != 0:
-            cnt[ws[i]] += 1
-            diff += tall-ws[i]
+start_point = [0,0]
+stone = 0
+dx = [0,1,1,-1]
+dy = [1,1,0,1]
+flag = True
 
-    if cnt[1] != 0:
-        ans += cnt[1]*2-1
-
-    diff_0 = diff - cnt[1]
-
-    if diff != 0:
-        if cnt[2]*2 == 2 and diff == 2:
-            ans = 2
-        elif diff_0 < cnt[ans+1]*(ans+1):
-            ans = ans
-        elif diff_0 >= cnt[ans+1]*(ans+1):
-            if diff%3 == 0:
-                ans = diff//3*2
-            elif diff%3 == 1:
-                ans = diff//3*2 + 1
-            elif diff%3 == 2:
-                ans = diff//3*2 + 2
-
-    else:
-        ans = 0
-
-    print(f'#{tc} {ans}')
+for j in range(19):
+    if flag == False:
+        break
+    for i in range(19):
+        if flag == False:
+            break
+        # 돌이 있을때
+        if board[i][j] > 0:
+            stone = board[i][j]
+            # print(i,j)
+            # stone_x = i ,stone_y = j
+            # delta search
+            for k in range(4):
+                z = 1
+                x = dx[k] *z
+                y = dy[k] *z
+                # print(stone,'--------',i,j,'flag',flag,'x,y',i+x,j+y)
+                while flag and 0<=i+x < 19 and 0<=j+y <19 :
+                    # print(board[i+x][j+y])
+                    # 5목일 때
+                    if z ==4 and board[i+x][j+y] == stone:
+                        # 6목 확인
+                        z += 1
+                        x = dx[k] * z
+                        y = dy[k] * z
+                        # print(i+x,j+y, 'z',z)
+                        if 0 <= i + x < 19 and 0 <= j + y < 19 and board[i+x][j+y] == stone:
+                            break
+                        if 0<= i-dx[k] < 19 and 0<=j-dy[k]<19 and board[i-dx[k]][j-dy[k]] == stone:
+                           break
+                        else:
+                            # print('-----')
+                            print(stone)
+                            print(i+1,j+1)
+                            flag = False
+                            break
+                    elif board[i+x][j+y] != stone:
+                        break
+                    else:
+                        z += 1
+                        x = dx[k]*z
+                        y = dy[k]* z
+if flag == True:
+    print(0)
