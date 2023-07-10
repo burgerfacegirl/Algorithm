@@ -1,0 +1,8 @@
+def solution(num, k):
+    answer = -1
+    num = str(num)
+    for idx, num in enumerate(num):
+        if num == str(k):
+            answer = idx + 1
+            break
+    return answer
