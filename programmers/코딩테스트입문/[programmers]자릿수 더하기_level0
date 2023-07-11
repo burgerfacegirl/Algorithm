@@ -1,0 +1,8 @@
+def solution(n):
+    answer = 0
+    m = 10 ** (len(str(n)) - 1)
+    while n>0:
+        answer += n//m
+        n = n % m
+        m = m / 10
+    return answer
