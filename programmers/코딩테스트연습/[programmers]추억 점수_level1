@@ -1,0 +1,17 @@
+def solution(name, yearning, photo):
+    score = {}
+    
+    for i in range(len(name)):
+        score[name[i]] = yearning[i]
+        
+    answer = []
+    
+    for p in photo:
+        total = 0
+        for person in p:
+#             object 내에 해당 key (사람 이름) 의 value 존재 여부 확인 
+            if person in score:
+                total += score[person]
+        answer.append(total)
+        
+    return answer
