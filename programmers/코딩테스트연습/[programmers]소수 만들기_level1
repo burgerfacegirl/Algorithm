@@ -1,0 +1,17 @@
+def solution(nums):
+    answer = 0
+    
+    def isItPrime(n):
+        for i in range(2, int(n**0.5)+1):
+            if n%i==0:
+                return False
+        return True
+    
+    n = len(nums)
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                if isItPrime(nums[i] + nums[j] + nums[k]):
+                    answer += 1
+                    
+    return answer
